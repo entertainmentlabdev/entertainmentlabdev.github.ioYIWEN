@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>sponge bob and jellyfish</title>
+    <meta name="description" content="Hello, WebVR! - A-Frame">
+    <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.12.3/dist/aframe-extras.min.js"></script>
+    <!-- day dream controller component -->
+    <script src="https://rawgit.com/ryanbetts/aframe-daydream-controller-component/master/dist/aframe-daydream-controller-component.min.js"></script>
+    <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
+    <script src="/Script/jellyfish.js"></script>
+
+    </head>
+  <body>
+
+    <a-scene id = 'JellyScene' physics="debug: true; gravity:0">
+      
+    <!-- <a-entity obj-model="obj: #my-obj; mtl: #my-mtl"></a-entity> -->
+     <asset>
+       <a-entity id = "net_json" src = "/models/jelly_net.json"></a-entity>
+       <a-entity id = "jelly_json" src = "/models/jelly.json"></a-entity>
+
+
+      <!-- Jelly Fish Template. -->
+      <!--  <script id="jellyfishTemplate" type="text/html">
+         <a-entity 
+          id= "childJelly" 
+          class="jellyfish"
+          jellyfish-component = "index:${idx}"
+          dynamic-body = "mass:1"
+          json-model="src: #jelly_json"
+          scale = ".1 .1 .1"
+          position = "${pos}"
+          event-set__1="_event: mousedown; scale: .1 .1 .1"
+          event-set__2="_event: mouseup; scale: .12 .12 .12"
+          event-set__3="_event: mouseenter; scale: .15 .15 .15"
+          event-set__4="_event: mouseleave; scale: .1 .1 .1"   
+          ></a-entity>
+       </script> -->
+      </asset>
+
+      <a-sky color="#fff"></a-sky>
+
+      <!-- Camera + cursor. -->
+      <a-entity id='player' camera look-controls position = "0 2 0">
+        <a-cursor id="cursor"></a-cursor>
+      </a-entity>
+
+      <!-- how to load my own model?  -->
+      <!-- <a-entity daydream-controller></a-entity> -->
+      <!-- <a-entity daydream-controls></a-entity> -->
+
+
+      <a-entity id = "jellynet" 
+                json-model = "src: #net_json" 
+                position = "0 0 2"
+                rotation = "0 90 0" 
+                scale = "0.1 0.1 0.1" >            
+      </a-entity>
+
+   
+
+      <a-entity id = "jellytank">
+           <!-- <a-entity  template = 'src:#jellyfishTemplate' position = '0 1 -1' ></a-entity> -->
+
+      </a-entity>
+
+      <!-- the ground -->
+      <a-entity id = "ground" 
+                geometry="primitive: plane; height: 10; width: 10" 
+                rotation="90 0 0"
+                material="color: green; side: double"></a-entity>
+
+
+      </a-scene>
+      <!-- Floor -->
+    
+  </body>
+  
+</html>
